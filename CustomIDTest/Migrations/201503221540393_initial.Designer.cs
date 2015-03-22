@@ -7,13 +7,13 @@ namespace CustomIDTest.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class addIndexToReference : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addIndexToReference));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201503221326338_addIndexToReference"; }
+            get { return "201503221540393_initial"; }
         }
         
         string IMigrationMetadata.Source

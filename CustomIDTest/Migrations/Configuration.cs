@@ -10,7 +10,6 @@ namespace CustomIDTest.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "CustomIDTest.Models.EmpContext";
         }
 
         protected override void Seed(CustomIDTest.Models.EmpContext context)

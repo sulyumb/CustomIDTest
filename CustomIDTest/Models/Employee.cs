@@ -12,9 +12,7 @@ namespace CustomIDTest.Models
         [Key]
         public int EmployeeID { get; set; }
 
-
-        
-        
+        //is unique needs not to exceeds 900
         [MaxLength(450)]
         [Index(IsUnique = true)]
         public string Reference { get; set; }
