@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CustomIDTest.Models;
+using System.Data.Entity.Infrastructure;
 
 namespace CustomIDTest.Controllers
 {
@@ -43,12 +44,6 @@ namespace CustomIDTest.Controllers
 
 
 
-        public ActionResult ErrorPage() 
-        {
-
-            return View() ;
-        }
-
         // POST: Employees/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -56,55 +51,79 @@ namespace CustomIDTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EmployeeID,FirstName,LastName,Reference,ManualRefrence")] Employee employee)
         {
-            string ReferenceBuff = "";
+          
+            //initialization
+
+            // take the reference request
+            string ReferenceBuff = ""; 
+
             try
             {
-
                 ReferenceBuff = Request["Reference"].ToString();
             }
-            catch (NullReferenceException ex) {
-                
-                ReferenceBuff = null;
-            }
-
-            Employee empRef = db.Employees.First(x => x.Reference == ReferenceBuff);
-
-            if (empRef.Reference != null)
+            catch (NullReferenceException) 
             {
-                return RedirectToAction("ErrorPage");
+                ReferenceBuff = "";
             }
-            else
+            //initialize employee instance to null 
+            Employee empRef = null ;
+            //initialize the current date to use current year
+            DateTime date = DateTime.Now;
+
+            //initialize string for manual reference
+            string ManualRef = "" ;
+
+            if (ReferenceBuff == "")
             {
-                DateTime date = DateTime.Now;
-                string ManualBuff = "";
-                if (Request["Reference"] == null)
+
+                empRef = null ;
+            }
+            else 
+            {
+                try
                 {
-                    ManualBuff = "";
+                    empRef = db.Employees.First(x => x.Reference == ReferenceBuff);
                 }
-                else
+                catch (InvalidOperationException)
                 {
-                    ManualBuff = Request["Reference"].ToString();
+                    empRef = null;
                 }
-                string ManualRef = "FSR-WL/" + ManualBuff + "/" + date.Year;
+               
+                if (empRef != null)
+                {
+                    return RedirectToAction("ErrorPage");
+                }
+                else 
+                {
+                    ManualRef = "FSR-WL/" + ReferenceBuff + "/" + date.Year;
+                }
+
+            }
 
                 if (ModelState.IsValid)
                 {
-
-                    db.Employees.Add(employee);
-                    db.SaveChanges();
-                    if (ManualBuff == "")
+                    try
                     {
-                        var refer = addRef(employee);
-                        employee.Reference = refer;
+                        db.Employees.Add(employee);
+                        db.SaveChanges();
+                        if (ReferenceBuff == "")
+                        {
+                            var refer = addRef(employee);
+                            employee.Reference = refer;
+                        }
+                        else
+                        {
+                            employee.Reference = ManualRef;
+                        }
+                        db.SaveChanges();
                     }
-                    else
+                    catch (DbUpdateException)
                     {
-                        employee.Reference = ManualRef;
+                        db.Entry(employee).State = EntityState.Deleted;
+                        db.SaveChanges();
+                        return RedirectToAction("ErrorPage");
                     }
-
-
-                    db.SaveChanges();
-
+                    
                     return RedirectToAction("Index");
 
                 }
@@ -112,7 +131,7 @@ namespace CustomIDTest.Controllers
 
                 //db.SaveChanges();
                 return View(employee);
-            }
+
         }
 
         public string addRef(Employee emp)
@@ -121,6 +140,14 @@ namespace CustomIDTest.Controllers
             //string id_buff = Convert.ToString(this.EmployeeID) ;
             return "FSR-WL/" + emp.EmployeeID + "/" + date.Year;
         }
+
+
+        public ActionResult ErrorPage()
+        {
+
+            return View();
+        }
+
 
         // GET: Employees/Edit/5
         public ActionResult Edit(int? id)

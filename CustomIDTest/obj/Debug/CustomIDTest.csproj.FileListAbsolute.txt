@@ -53,13 +53,7 @@ c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomID
 c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.csprojResolveAssemblyReference.cache
 c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.dll
 c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.pdb
-c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.Migrations.InitialCreate.resources
 c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.csproj.GenerateResource.Cache
-c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.Migrations.addingReq.resources
-c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.Migrations.deleteRequired.resources
-c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.Migrations.referenceAsAKey.resources
-c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.Migrations.RemoveClusteredKeys.resources
-c:\users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.Migrations.addIndexToReference.resources
 C:\Users\Sulaiman\Desktop\CustomIDTest\CustomIDTest\bin\CustomIDTest.dll.config
 C:\Users\Sulaiman\Desktop\CustomIDTest\CustomIDTest\bin\CustomIDTest.dll
 C:\Users\Sulaiman\Desktop\CustomIDTest\CustomIDTest\bin\CustomIDTest.pdb
@@ -117,3 +111,4 @@ C:\Users\Sulaiman\Desktop\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.dll
 C:\Users\Sulaiman\Desktop\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.pdb
 C:\Users\Sulaiman\Desktop\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.Migrations.initial.resources
 C:\Users\Sulaiman\Desktop\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.csproj.GenerateResource.Cache
+C:\Users\almozainisu\documents\visual studio 2013\Projects\CustomIDTest\CustomIDTest\obj\Debug\CustomIDTest.Migrations.initial.resources
